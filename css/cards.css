@@ -1,0 +1,166 @@
+/* Employee card styles */
+
+/* Card container */
+.employee-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.employee-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+
+/* Employee info */
+.employee-info {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.employee-name {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.employee-position {
+    font-size: var(--font-size-lg);
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.employee-department {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--background);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+}
+
+/* Skills section */
+.employee-skills {
+    margin-bottom: var(--spacing-lg);
+}
+
+.employee-skills h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--background);
+    color: var(--text-primary);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: help;
+    border: 1px solid transparent;
+}
+
+.skill-badge:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Skill colors by proficiency level */
+.skill-badge[data-proficiency="Expert"] {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: var(--text-primary);
+    border-color: #ffd700;
+}
+
+.skill-badge[data-proficiency="Advanced"] {
+    background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+    color: var(--text-primary);
+    border-color: #c0c0c0;
+}
+
+.skill-badge[data-proficiency="Intermediate"] {
+    background: linear-gradient(135deg, #cd7f32, #e8a87c);
+    color: var(--white);
+    border-color: #cd7f32;
+}
+
+.skill-badge[data-proficiency="Beginner"] {
+    background: var(--background);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+.skill-level {
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .employee-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .employee-name {
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .employee-card {
+        padding: var(--spacing-md);
+    }
+    
+    .skills-list {
+        gap: var(--spacing-xs);
+    }
+    
+    .skill-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .employee-card {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+        padding: var(--spacing-md);
+    }
+    
+    .employee-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
