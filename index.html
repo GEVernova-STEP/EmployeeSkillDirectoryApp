@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Employee Skills Directory - Searchable and filterable employee registry">
+    <title>Employee Skills Directory</title>
+    
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/filters.css">
+    
+    <style>
+        /* Loading state styles */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            color: #e74c3c;
+            padding: 2rem;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        .error h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .error-details {
+            background: #fee;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-family: monospace;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Loading Employee Directory...</p>
+        </div>
+    </div>
+
+    <script>
+        // XSLT Transformation Engine
+        // Loads XML data and applies XSLT transformation
+        class EmployeeDirectoryApp {
+            constructor() {
+                this.xmlPath = 'data/employees.xml';
+                this.xsltPath = 'xslt/employees-to-html.xslt';
+                this.appContainer = document.getElementById('app');
+            }
+
+            // Initialize the application
+            async init() {
+                try {
+                    console.log('Initializing Employee Directory...');
+                    
+                    // Load both XML and XSLT files parrallel
+                    const [xmlDoc, xsltDoc] = await Promise.all([
+                        this.loadXML(this.xmlPath),
+                        this.loadXML(this.xsltPath)
+                    ]);
+                    
+                    console.log('XML and XSLT loaded successfully');
+                    
+                    // Perform XSLT transformation
+                    const resultDoc = this.transformXML(xmlDoc, xsltDoc);
+                    
+                    // Render the result
+                    this.render(resultDoc);
+                    
+                    console.log('Directory rendered successfully');
+                    
+                } catch (error) {
+                    this.handleError(error);
+                }
+            }
+
+            // Load XML file from URL
+            async loadXML(url) {
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${url}: ${response.status} ${response.statusText}`);
+                }
+                
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                
+                // Check if parsing failed
+                const parserError = xmlDoc.querySelector('parsererror');
+                if (parserError) {
+                    throw new Error(`XML parsing error in ${url}: ${parserError.textContent}`);
+                }
+                
+                return xmlDoc;
+            }
+
+            // Transform XML using XSLT
+            transformXML(xml, xslt) {
+                const xsltProcessor = new XSLTProcessor();
+                
+                try {
+                    xsltProcessor.importStylesheet(xslt);
+                    const resultDoc = xsltProcessor.transformToDocument(xml);
+                    
+                    if (!resultDoc) {
+                        throw new Error('XSLT transformation failed to produce a result');
+                    }
+                    
+                    return resultDoc;
+                    
+                } catch (error) {
+                    throw new Error(`XSLT transformation error: ${error.message}`);
+                }
+            }
+
+            // Render the transformed document
+            render(doc) {
+                // Replace the entire document body content
+                const bodyContent = doc.body.innerHTML;
+                document.body.innerHTML = bodyContent;
+                
+                // Re-load JavaScript modules after DOM is ready
+                this.loadScripts();
+            }
+
+            // Load JavaScript modules dynamically
+            loadScripts() {
+                const scripts = [
+                    'js/search.js',
+                    'js/filter.js',
+                    'js/employee-manager.js',
+                    'js/app.js'
+                ];
+                
+                scripts.forEach((src, index) => {
+                    const script = document.createElement('script');
+                    script.src = src;
+                    script.defer = true;
+                    
+                    // Initialize app after all scripts are loaded
+                    if (index === scripts.length - 1) {
+                        script.onload = () => {
+                            console.log('All scripts loaded');
+                            // Trigger custom event to signal app is ready
+                            window.dispatchEvent(new Event('employeeDirectoryReady'));
+                        };
+                    }
+                    
+                    document.body.appendChild(script);
+                });
+            }
+
+            // Handle errors and show helpful message
+            handleError(error) {
+                console.error('Application Error:', error);
+                
+                this.appContainer.innerHTML = `
+                    <div class="error">
+                        <h2>Error Loading Employee Directory</h2>
+                        <p>We encountered a problem while loading the directory.</p>
+                        <div class="error-details">
+                            <strong>Error:</strong> ${error.message}
+                        </div>
+                        <p style="margin-top: 2rem;">
+                            <strong>Troubleshooting:</strong><br>
+                            - Make sure you're running this from a web server (not file://)<br>
+                            - Check that data/employees.xml exists<br>
+                            - Check that xslt/employees-to-html.xslt exists<br>
+                            - Check the browser console for more details
+                        </p>
+                        <button onclick="location.reload()" style="
+                            margin-top: 1rem;
+                            padding: 0.75rem 1.5rem;
+                            background: #3498db;
+                            color: white;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size: 1rem;
+                        ">
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // Start the app when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                const app = new EmployeeDirectoryApp();
+                app.init();
+            });
+        } else {
+            const app = new EmployeeDirectoryApp();
+            app.init();
+        }
+    </script>
+</body>
+</html>
