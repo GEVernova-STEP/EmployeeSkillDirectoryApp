@@ -1,0 +1,24 @@
+{
+  "name": "employee-skills-directory",
+  "version": "1.0.0",
+  "description": "XML-based employee and mentor registry with searchable, filterable directory UI via XSLT transformation",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o"
+  },
+  "keywords": [
+    "employee-directory",
+    "xml",
+    "xslt",
+    "skills-directory",
+    "mentor-registry"
+  ],
+  "author": "GE Vernova",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/employee-skills-directory.git"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
