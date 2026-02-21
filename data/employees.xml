@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xslt/employees-to-html.xslt"?>
+<employeeDirectory>
+    <metadata>
+        <title>Employee Skills Directory</title>
+        <organization>GE Vernova</organization>
+        <totalEmployees>8</totalEmployees>
+    </metadata>
+    
+    <employees>
+        <!-- Employee 1 -->
+        <employee id="E001">
+            <personalInfo>
+                <firstName>Sarah</firstName>
+                <lastName>Johnson</lastName>
+            </personalInfo>
+            <jobInfo>
+                <department>Engineering</department>
+                <position>Senior Software Engineer</position>
+                <role>Full Stack Developer</role>
+                <yearsOfExperience>8</yearsOfExperience>
+            </jobInfo>
+            <skills>
+                <skill>
+                    <name>JavaScript</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>7</yearsUsed>
+                </skill>
+                <skill>
+                    <name>React</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>5</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Node.js</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>6</yearsUsed>
+                </skill>
+            </skills>
+        </employee>
+
+        <!-- Employee 2 -->
+        <employee id="E002">
+            <personalInfo>
+                <firstName>Michael</firstName>
+                <lastName>Chen</lastName>
+            </personalInfo>
+            <jobInfo>
+                <department>Engineering</department>
+                <position>Junior Software Engineer</position>
+                <role>Backend Developer</role>
+                <yearsOfExperience>2</yearsOfExperience>
+            </jobInfo>
+            <skills>
+                <skill>
+                    <name>Java</name>
+                    <proficiency>Intermediate</proficiency>
+                    <yearsUsed>2</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Spring Boot</name>
+                    <proficiency>Intermediate</proficiency>
+                    <yearsUsed>1.5</yearsUsed>
+                </skill>
+                <skill>
+                    <name>SQL</name>
+                    <proficiency>Intermediate</proficiency>
+                    <yearsUsed>2</yearsUsed>
+                </skill>
+            </skills>
+        </employee>
+
+        <!-- Employee 3 -->
+        <employee id="E003">
+            <personalInfo>
+                <firstName>Emily</firstName>
+                <lastName>Rodriguez</lastName>
+            </personalInfo>
+            <jobInfo>
+                <department>Data Science</department>
+                <position>Lead Data Scientist</position>
+                <role>ML Engineer</role>
+                <yearsOfExperience>10</yearsOfExperience>
+            </jobInfo>
+            <skills>
+                <skill>
+                    <name>Python</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>9</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Machine Learning</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>7</yearsUsed>
+                </skill>
+                <skill>
+                    <name>TensorFlow</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>5</yearsUsed>
+                </skill>
+            </skills>
+        </employee>
+
+        <!-- Employee 4 -->
+        <employee id="E004">
+            <personalInfo>
+                <firstName>David</firstName>
+                <lastName>Thompson</lastName>
+            </personalInfo>
+            <jobInfo>
+                <department>Design</department>
+                <position>UX Designer</position>
+                <role>Product Designer</role>
+                <yearsOfExperience>4</yearsOfExperience>
+            </jobInfo>
+            <skills>
+                <skill>
+                    <name>Figma</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>4</yearsUsed>
+                </skill>
+                <skill>
+                    <name>UI/UX Design</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>4</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Adobe XD</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>3</yearsUsed>
+                </skill>
+            </skills>
+        </employee>
+
+        <!-- Employee 5 -->
+        <employee id="E005">
+            <personalInfo>
+                <firstName>Jennifer</firstName>
+                <lastName>Park</lastName>
+            </personalInfo>
+            <jobInfo>
+                <department>Product Management</department>
+                <position>Senior Product Manager</position>
+                <role>Product Manager</role>
+                <yearsOfExperience>12</yearsOfExperience>
+            </jobInfo>
+            <skills>
+                <skill>
+                    <name>Product Strategy</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>10</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Agile</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>8</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Data Analysis</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>6</yearsUsed>
+                </skill>
+            </skills>
+        </employee>
+
+        <!-- Employee 6 -->
+        <employee id="E006">
+            <personalInfo>
+                <firstName>Alex</firstName>
+                <lastName>Kumar</lastName>
+            </personalInfo>
+            <jobInfo>
+                <department>Engineering</department>
+                <position>DevOps Engineer</position>
+                <role>Infrastructure</role>
+                <yearsOfExperience>5</yearsOfExperience>
+            </jobInfo>
+            <skills>
+                <skill>
+                    <name>Docker</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>4</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Kubernetes</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>3</yearsUsed>
+                </skill>
+                <skill>
+                    <name>AWS</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>5</yearsUsed>
+                </skill>
+            </skills>
+        </employee>
+
+        <!-- Employee 7 -->
+        <employee id="E007">
+            <personalInfo>
+                <firstName>Rachel</firstName>
+                <lastName>Williams</lastName>
+            </personalInfo>
+            <jobInfo>
+                <department>Security</department>
+                <position>Security Architect</position>
+                <role>Cybersecurity Specialist</role>
+                <yearsOfExperience>15</yearsOfExperience>
+            </jobInfo>
+            <skills>
+                <skill>
+                    <name>Cybersecurity</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>14</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Penetration Testing</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>12</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Network Security</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>15</yearsUsed>
+                </skill>
+            </skills>
+        </employee>
+
+        <!-- Employee 8 -->
+        <employee id="E008">
+            <personalInfo>
+                <firstName>Lisa</firstName>
+                <lastName>Anderson</lastName>
+            </personalInfo>
+            <jobInfo>
+                <department>Engineering</department>
+                <position>Mobile Developer</position>
+                <role>Mobile Developer</role>
+                <yearsOfExperience>6</yearsOfExperience>
+            </jobInfo>
+            <skills>
+                <skill>
+                    <name>React Native</name>
+                    <proficiency>Expert</proficiency>
+                    <yearsUsed>5</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Swift</name>
+                    <proficiency>Advanced</proficiency>
+                    <yearsUsed>4</yearsUsed>
+                </skill>
+                <skill>
+                    <name>Kotlin</name>
+                    <proficiency>Intermediate</proficiency>
+                    <yearsUsed>3</yearsUsed>
+                </skill>
+            </skills>
+        </employee>
+
+    </employees>
+</employeeDirectory>
